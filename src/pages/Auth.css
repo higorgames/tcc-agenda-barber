@@ -1,0 +1,148 @@
+.pagina-login {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #97c9f1;
+
+  font-family: Arial, sans-serif;
+}
+
+.caixa-login {
+  width: 400px;
+
+  background-color: white;
+
+  padding: 40px;
+
+  border-radius: 12px;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+
+  margin: 0 auto 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  background-color: #535ed9;;
+  color: white;
+
+  font-size: 25px;
+}
+
+.nome-sistema {
+  text-align: center;
+
+  font-size: 14px;
+
+  letter-spacing: 2px;
+
+  color: #3644e0;;
+
+  margin-bottom: 15px;
+}
+
+.caixa-login h1 {
+  text-align: center;
+
+  font-size: 28px;
+
+  color: #222222;
+
+  margin-bottom: 8px;
+}
+
+.descricao {
+  text-align: center;
+
+  color: #777777;
+
+  margin-bottom: 30px;
+
+  font-size: 14px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 20px;
+}
+
+.campo label {
+  margin-bottom: 8px;
+
+  font-weight: bold;
+
+  color: #222222;
+
+  font-size: 14px;
+}
+
+.campo input {
+  padding: 13px;
+
+  border: 1px solid #cccccc;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+}
+
+.campo input:focus {
+  outline: none;
+
+  border-color: #3644e0;;
+}
+
+.botao-entrar {
+  width: 100%;
+
+  padding: 13px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background-color: #3644e0;;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.botao-entrar:hover {
+  background-color: #444444;
+}
+
+.criar-conta {
+  text-align: center;
+
+  margin-top: 25px;
+
+  font-size: 14px;
+
+  color: #777777;
+}
+
+.criar-conta span {
+  color: #3644e0;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
