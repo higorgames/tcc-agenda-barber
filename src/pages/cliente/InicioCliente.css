@@ -1,0 +1,480 @@
+
+/* ====================================
+   CONFIGURAÇÕES GERAIS
+==================================== */
+
+body {
+  margin: 0;
+  background: #f3f6fa;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.inicio-cliente {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 7% 55px;
+  box-sizing: border-box;
+  color: #26384b;
+}
+
+.inicio-cliente * {
+  box-sizing: border-box;
+}
+
+/* ====================================
+   CABEÇALHO
+==================================== */
+
+.cliente-header {
+  max-width: 1200px;
+  height: 85px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e4eaf0;
+}
+
+.cliente-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 43px;
+  height: 43px;
+  border-radius: 10px;
+  background: #345675;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 23px;
+}
+
+.cliente-logo strong {
+  display: block;
+  font-size: 17px;
+  letter-spacing: 1px;
+  color: #345675;
+}
+
+.cliente-logo small {
+  display: block;
+  margin-top: 4px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #8998a8;
+}
+
+.perfil-header {
+  padding: 11px 20px;
+  border: 1px solid #dce5ed;
+  border-radius: 7px;
+  background: white;
+  color: #345675;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.perfil-header:hover {
+  background: #eaf1f7;
+}
+
+/* ====================================
+   BOAS-VINDAS
+==================================== */
+
+.welcome-card {
+  max-width: 1200px;
+  min-height: 270px;
+  margin: 35px auto;
+  padding: 45px 50px;
+  border-radius: 12px;
+  background: #345675;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.welcome-label {
+  color: #c9d9e8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.welcome-content h1 {
+  margin: 17px 0 10px;
+  font-size: 35px;
+  font-weight: 650;
+}
+
+.welcome-content p {
+  margin: 0;
+  color: #dce6ef;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.button-agendar {
+  margin-top: 25px;
+  padding: 13px 20px;
+  border: none;
+  border-radius: 7px;
+  background: #f4f7fa;
+  color: #345675;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.button-agendar span {
+  margin-left: 15px;
+}
+
+.button-agendar:hover {
+  background: #dce8f2;
+}
+
+.welcome-mark {
+  width: 155px;
+  height: 155px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.8);
+  font-size: 65px;
+  margin-right: 40px;
+}
+
+/* ====================================
+   INDICADORES
+==================================== */
+
+.stat-grid {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  min-height: 125px;
+  padding: 22px;
+  background: white;
+  border: 1px solid #e5ebf1;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.stat-icon {
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #eaf1f7;
+  color: #456b8e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+}
+
+.stat-card p {
+  margin: 0 0 7px;
+  color: #63758a;
+  font-size: 12px;
+}
+
+.stat-card strong {
+  display: block;
+  color: #304f6d;
+  font-size: 25px;
+}
+
+.stat-card small {
+  display: block;
+  margin-top: 4px;
+  color: #9ba7b4;
+  font-size: 11px;
+}
+
+/* ====================================
+   SEÇÕES PRINCIPAIS
+==================================== */
+
+.content-card {
+  max-width: 1200px;
+  margin: 25px auto;
+  padding: 28px;
+  background: white;
+  border: 1px solid #e5ebf1;
+  border-radius: 10px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.section-label {
+  color: #7e91a4;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+}
+
+.section-heading h2 {
+  margin: 8px 0 0;
+  color: #304f6d;
+  font-size: 20px;
+  font-weight: 650;
+}
+
+/* ====================================
+   AGENDAMENTO
+==================================== */
+
+.appointment-card {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 20px;
+  border: 1px solid #e5ebf1;
+  border-radius: 9px;
+  background: #fbfcfe;
+}
+
+.appointment-date {
+  width: 65px;
+  height: 70px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #eaf1f7;
+  border-radius: 8px;
+  color: #345675;
+}
+
+.appointment-date strong {
+  font-size: 25px;
+}
+
+.appointment-date span {
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.appointment-main {
+  flex: 1;
+}
+
+.appointment-main strong {
+  font-size: 15px;
+  color: #345675;
+}
+
+.appointment-main p {
+  margin: 7px 0;
+  color: #758699;
+  font-size: 13px;
+}
+
+.appointment-main small {
+  color: #8a9aab;
+  font-size: 12px;
+}
+
+.status-badge {
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: #e8f1f9;
+  color: #416b8e;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ====================================
+   ESTADO VAZIO
+==================================== */
+
+.empty-state {
+  padding: 35px 15px;
+  text-align: center;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.empty-icon {
+  font-size: 35px;
+  color: #7895b1;
+}
+
+.empty-state h3 {
+  margin: 15px 0 8px;
+  color: #345675;
+  font-size: 17px;
+}
+
+.empty-state p {
+  max-width: 430px;
+  margin: 0 auto;
+  color: #8493a3;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.button-secondary {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 7px;
+  background: #456b8e;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button-secondary:hover {
+  background: #345675;
+}
+
+/* ====================================
+   SERVIÇOS
+==================================== */
+
+.service-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.service-preview {
+  padding: 23px;
+  border: 1px solid #e5ebf1;
+  border-radius: 9px;
+  background: #ffffff;
+  transition: 0.2s;
+}
+
+.service-preview:hover {
+  border-color: #b3c8da;
+  background: #fbfdff;
+}
+
+.service-symbol {
+  width: 37px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf1f7;
+  border-radius: 8px;
+  color: #456b8e;
+  font-size: 19px;
+}
+
+.service-preview h3 {
+  margin: 16px 0 8px;
+  font-size: 15px;
+  color: #345675;
+}
+
+.service-preview p {
+  color: #8b99a8;
+  font-size: 12px;
+}
+
+.service-preview strong {
+  display: block;
+  margin-top: 15px;
+  color: #456b8e;
+  font-size: 16px;
+}
+
+.empty-services {
+  padding: 25px;
+  text-align: center;
+  color: #8292a2;
+  background: #f8fafc;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+/* ====================================
+   RESPONSIVIDADE
+==================================== */
+
+@media (max-width: 850px) {
+  .inicio-cliente {
+    padding: 0 4% 35px;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-mark {
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cliente-header {
+    height: 75px;
+  }
+
+  .cliente-logo strong {
+    font-size: 14px;
+  }
+
+  .welcome-card {
+    padding: 30px 23px;
+    min-height: 230px;
+  }
+
+  .welcome-content h1 {
+    font-size: 28px;
+  }
+
+  .welcome-mark {
+    display: none;
+  }
+
+  .content-card {
+    padding: 20px 16px;
+  }
+
+  .appointment-card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .appointment-main {
+    min-width: 150px;
+  }
+
+  .service-preview-grid {
+    grid-template-columns: 1fr;
+  }
+}

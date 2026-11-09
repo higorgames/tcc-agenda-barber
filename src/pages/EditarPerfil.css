@@ -1,0 +1,554 @@
+/* ========================================
+   EDITAR PERFIL - AGENDA BARBER
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+.editar-page {
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 35px 20px;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(54, 72, 230, 0.10),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(54, 72, 230, 0.07),
+      transparent 30%
+    ),
+    #f6f8fc;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ========================================
+   CARD PRINCIPAL
+======================================== */
+
+.editar-card {
+  width: 100%;
+  max-width: 680px;
+
+  background: #ffffff;
+
+  border-radius: 28px;
+
+  padding: 42px;
+
+  box-shadow:
+    0 25px 70px rgba(30, 45, 90, 0.10);
+
+  border: 1px solid #edf0f6;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+
+/* linha azul superior */
+
+.editar-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: #3546df;
+}
+
+
+/* ========================================
+   CABEÇALHO
+======================================== */
+
+.editar-header {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  margin-bottom: 38px;
+
+  position: relative;
+}
+
+
+/* ========================================
+   BOTÃO VOLTAR
+======================================== */
+
+.btn-voltar {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  border: 1px solid #dce2f0;
+
+  background: #f7f9ff;
+
+  color: #263a9e;
+
+  font-size: 24px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.btn-voltar:hover {
+  background: #eaf0ff;
+
+  border-color: #bfcaff;
+
+  transform: translateX(-3px);
+}
+
+
+/* ========================================
+   AVATAR
+======================================== */
+
+.perfil-avatar {
+  width: 78px;
+  height: 78px;
+
+  min-width: 78px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 22px;
+
+  background: linear-gradient(
+    135deg,
+    #3546df,
+    #5665ee
+  );
+
+  color: white;
+
+  font-size: 30px;
+
+  font-weight: 700;
+
+  box-shadow:
+    0 12px 25px rgba(53, 70, 223, 0.22);
+}
+
+
+/* ========================================
+   TEXTOS DO CABEÇALHO
+======================================== */
+
+.editar-header-text {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.mini-logo {
+  color: #3546df;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+}
+
+.editar-header h1 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 29px;
+
+  font-weight: 750;
+
+  letter-spacing: -0.5px;
+}
+
+.editar-header p {
+  margin: 0;
+
+  color: #8a93a5;
+
+  font-size: 14px;
+}
+
+
+/* ========================================
+   FORMULÁRIO
+======================================== */
+
+.editar-form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+
+/* ========================================
+   CAMPOS
+======================================== */
+
+.campo {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.campo label {
+  color: #344054;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.1px;
+}
+
+
+/* ========================================
+   INPUT
+======================================== */
+
+.input-wrapper {
+  width: 100%;
+
+  height: 56px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 0 16px;
+
+  background: #f9fafc;
+
+  border: 1px solid #e1e5ee;
+
+  border-radius: 14px;
+
+  transition:
+    0.2s ease;
+}
+
+.input-wrapper:hover {
+  border-color: #c8d0e2;
+
+  background: #fbfcff;
+}
+
+.input-wrapper:focus-within {
+  background: #ffffff;
+
+  border-color: #4254e8;
+
+  box-shadow:
+    0 0 0 4px rgba(66, 84, 232, 0.09);
+}
+
+
+/* ========================================
+   ÍCONES
+======================================== */
+
+.input-icon {
+  width: 30px;
+
+  display: flex;
+  justify-content: center;
+
+  margin-right: 7px;
+
+  color: #6d7890;
+
+  font-size: 16px;
+}
+
+
+/* ========================================
+   INPUT TEXT
+======================================== */
+
+.input-wrapper input {
+  width: 100%;
+
+  height: 100%;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #172033;
+
+  font-size: 15px;
+
+  font-family: inherit;
+}
+
+.input-wrapper input::placeholder {
+  color: #a0a8b8;
+}
+
+
+/* ========================================
+   MENSAGENS
+======================================== */
+
+.mensagem {
+  padding: 13px 16px;
+
+  border-radius: 12px;
+
+  text-align: center;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.mensagem.sucesso {
+  color: #147a4b;
+
+  background: #ecfaf3;
+
+  border: 1px solid #c8eedb;
+}
+
+.mensagem.erro {
+  color: #b02f3d;
+
+  background: #fff1f2;
+
+  border: 1px solid #f4d0d4;
+}
+
+
+/* ========================================
+   BOTÕES
+======================================== */
+
+.botoes {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 8px;
+}
+
+
+/* ========================================
+   BOTÃO CANCELAR
+   AZUL MAIS CLARO
+======================================== */
+
+.btn-cancelar {
+  flex: 1;
+
+  height: 54px;
+
+  border-radius: 13px;
+
+  border: 1.5px solid #3f51e8;
+
+  background: #eef1ff;
+
+  color: #3446d5;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.btn-cancelar:hover {
+  background: #e2e7ff;
+
+  border-color: #3042d3;
+
+  transform: translateY(-1px);
+}
+
+
+/* ========================================
+   BOTÃO SALVAR
+   AZUL PRINCIPAL
+======================================== */
+
+.btn-salvar {
+  flex: 2;
+
+  height: 54px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  background: #3949e8;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 18px rgba(57, 73, 232, 0.20);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.btn-salvar:hover {
+  background: #3041dc;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px rgba(57, 73, 232, 0.28);
+}
+
+.btn-salvar:active {
+  transform: translateY(0);
+}
+
+.btn-salvar:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+  transform: none;
+
+  box-shadow: none;
+}
+
+
+/* ========================================
+   RODAPÉ
+======================================== */
+
+.editar-footer {
+  margin-top: 28px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #edf0f5;
+
+  color: #9aa2b2;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+
+/* ========================================
+   RESPONSIVO
+======================================== */
+
+@media (max-width: 650px) {
+
+  .editar-page {
+    padding: 20px 12px;
+
+    align-items: flex-start;
+  }
+
+  .editar-card {
+    margin-top: 10px;
+
+    padding: 30px 22px 25px;
+
+    border-radius: 22px;
+  }
+
+  .editar-header {
+    gap: 13px;
+
+    margin-bottom: 30px;
+  }
+
+  .btn-voltar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .perfil-avatar {
+    width: 62px;
+    height: 62px;
+
+    min-width: 62px;
+
+    border-radius: 18px;
+
+    font-size: 24px;
+  }
+
+  .editar-header h1 {
+    font-size: 23px;
+  }
+
+  .editar-header p {
+    font-size: 12px;
+  }
+
+  .mini-logo {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+  .botoes {
+    flex-direction: column-reverse;
+  }
+
+  .btn-cancelar,
+  .btn-salvar {
+    width: 100%;
+
+    flex: none;
+  }
+}

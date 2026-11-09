@@ -1,0 +1,521 @@
+
+.agendar-page {
+  min-height: 100vh;
+  padding: 0 7% 60px;
+  background: #f3f6fa;
+  color: #30465c;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.agendar-page * {
+  box-sizing: border-box;
+}
+
+/* CABEÇALHO */
+
+.agendar-header {
+  height: 85px;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e2e9f0;
+}
+
+.agendar-header > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.agendar-logo {
+  width: 43px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #345675;
+  color: white;
+  font-size: 23px;
+}
+
+.agendar-header strong,
+.agendar-header small {
+  display: block;
+}
+
+.agendar-header strong {
+  color: #345675;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.agendar-header small {
+  margin-top: 4px;
+  color: #8796a5;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.agendar-voltar {
+  padding: 11px 17px;
+  background: white;
+  border: 1px solid #dce5ed;
+  border-radius: 7px;
+  color: #345675;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* INTRODUÇÃO */
+
+.agendar-intro {
+  max-width: 1200px;
+  margin: 42px auto 30px;
+}
+
+.agendar-intro > span {
+  color: #7290aa;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.agendar-intro h1 {
+  margin: 10px 0;
+  color: #345675;
+  font-size: 30px;
+}
+
+.agendar-intro p {
+  color: #8190a0;
+  font-size: 14px;
+}
+
+/* CARTÕES */
+
+.agendar-form {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.agendar-card,
+.agendar-resumo {
+  margin-bottom: 22px;
+  padding: 28px;
+  background: white;
+  border: 1px solid #e3eaf1;
+  border-radius: 10px;
+}
+
+.agendar-titulo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.agendar-titulo > span {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: #eaf1f7;
+  color: #456b8e;
+  font-weight: 800;
+}
+
+.agendar-titulo h2 {
+  margin: 0;
+  color: #345675;
+  font-size: 18px;
+}
+
+.agendar-titulo p {
+  margin: 5px 0 0;
+  color: #8b98a6;
+  font-size: 12px;
+}
+
+/* SERVIÇOS */
+
+.agendar-servicos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.agendar-servico {
+  padding: 20px;
+  text-align: left;
+  background: #fff;
+  border: 1px solid #e2e9f0;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.agendar-servico:hover,
+.agendar-servico.selecionado {
+  border-color: #52799d;
+  background: #f5f9fc;
+}
+
+.servico-topo {
+  display: flex;
+  justify-content: space-between;
+  color: #52799d;
+  font-size: 23px;
+}
+
+.servico-check,
+.barbeiro-check {
+  color: #345675;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.agendar-servico h3 {
+  margin: 16px 0 7px;
+  color: #345675;
+  font-size: 15px;
+}
+
+.agendar-servico p {
+  min-height: 36px;
+  margin: 0;
+  color: #8998a7;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.servico-informacoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 17px;
+}
+
+.servico-informacoes strong {
+  color: #456b8e;
+  font-size: 16px;
+}
+
+.servico-informacoes small {
+  color: #8998a7;
+}
+
+/* BARBEIROS */
+
+.agendar-barbeiros {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.agendar-barbeiro {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  text-align: left;
+  background: white;
+  border: 1px solid #e2e9f0;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.agendar-barbeiro:hover,
+.agendar-barbeiro.selecionado {
+  background: #f5f9fc;
+  border-color: #52799d;
+}
+
+.barbeiro-avatar {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf1f7;
+  color: #345675;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.agendar-barbeiro strong,
+.agendar-barbeiro small {
+  display: block;
+}
+
+.agendar-barbeiro strong {
+  color: #345675;
+  font-size: 13px;
+}
+
+.agendar-barbeiro small {
+  margin-top: 5px;
+  color: #8998a7;
+  font-size: 11px;
+}
+
+.barbeiro-check {
+  margin-left: auto;
+}
+
+/* DATA */
+
+.campo-data {
+  max-width: 350px;
+}
+
+.campo-data label {
+  display: block;
+  margin-bottom: 9px;
+  color: #536b80;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.campo-data input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #dce5ed;
+  border-radius: 7px;
+  color: #345675;
+  background: white;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.campo-data input:focus {
+  outline: 2px solid #c2d5e6;
+  border-color: #52799d;
+}
+
+/* HORÁRIOS */
+
+.horarios-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.horario-item {
+  min-width: 83px;
+  padding: 12px 17px;
+  color: #456b8e;
+  background: white;
+  border: 1px solid #dce5ed;
+  border-radius: 7px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.horario-item:hover,
+.horario-item.selecionado {
+  background: #345675;
+  border-color: #345675;
+  color: white;
+}
+
+.aviso-horario {
+  padding: 17px;
+  background: #f5f8fb;
+  border-radius: 7px;
+  color: #8292a2;
+  font-size: 13px;
+}
+
+/* RESUMO */
+
+.agendar-resumo h2 {
+  margin: 0 0 22px;
+  color: #345675;
+  font-size: 18px;
+}
+
+.resumo-linha,
+.resumo-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 13px 0;
+  border-bottom: 1px solid #edf1f5;
+  font-size: 13px;
+}
+
+.resumo-linha span,
+.resumo-total span {
+  color: #8190a0;
+}
+
+.resumo-linha strong {
+  text-align: right;
+  color: #456078;
+}
+
+.resumo-total {
+  margin-top: 8px;
+  padding: 19px 0;
+  border-bottom: none;
+}
+
+.resumo-total strong {
+  color: #345675;
+  font-size: 21px;
+}
+
+.botao-confirmar {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 7px;
+  background: #345675;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.botao-confirmar:hover {
+  background: #426d91;
+}
+
+.agendar-erro {
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 7px;
+  background: #fff0f0;
+  color: #b33d3d;
+  font-size: 13px;
+}
+
+.agendar-observacao {
+  color: #8795a4;
+  text-align: center;
+  font-size: 11px;
+}
+
+/* CONFIRMAÇÃO / PRÉVIA */
+
+.confirmacao-card {
+  max-width: 650px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.confirmacao-icone {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #eaf1f7;
+  color: #345675;
+  font-size: 27px;
+}
+
+.confirmacao-card h2 {
+  color: #345675;
+}
+
+.confirmacao-card > p {
+  color: #8190a0;
+  font-size: 13px;
+}
+
+.confirmacao-dados {
+  margin: 25px 0;
+  padding: 20px;
+  background: #f7f9fb;
+  border-radius: 9px;
+  text-align: left;
+}
+
+.confirmacao-dados > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e6ecf2;
+  font-size: 13px;
+}
+
+.confirmacao-dados span {
+  color: #8190a0;
+}
+
+.confirmacao-dados strong {
+  color: #345675;
+  text-align: right;
+}
+
+.aviso-demonstracao {
+  margin: 20px 0;
+  padding: 13px;
+  background: #f0f5fa;
+  border-radius: 7px;
+  color: #59748e !important;
+  line-height: 1.6;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 850px) {
+  .agendar-page {
+    padding: 0 4% 40px;
+  }
+
+  .agendar-servicos,
+  .agendar-barbeiros {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .agendar-header {
+    height: 75px;
+  }
+
+  .agendar-header strong {
+    font-size: 13px;
+  }
+
+  .agendar-voltar {
+    padding: 9px;
+    font-size: 11px;
+  }
+
+  .agendar-intro h1 {
+    font-size: 25px;
+  }
+
+  .agendar-card,
+  .agendar-resumo {
+    padding: 20px 16px;
+  }
+
+  .agendar-servicos,
+  .agendar-barbeiros {
+    grid-template-columns: 1fr;
+  }
+
+  .horario-item {
+    flex: 1 1 25%;
+  }
+
+  .confirmacao-dados > div {
+    font-size: 12px;
+  }
+}

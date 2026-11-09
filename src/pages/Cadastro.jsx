@@ -5,18 +5,20 @@ function Cadastro({ irParaLogin }) {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [telefone, setTelefone] = useState("");
+  const [dataNascimento, setDataNascimento] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
 
-  function cadastrar(event) {
+  async function cadastrar(event) {
     event.preventDefault();
 
     if (
-      nome === "" ||
-      email === "" ||
-      telefone === "" ||
-      senha === "" ||
-      confirmarSenha === ""
+      !nome ||
+      !email ||
+      !telefone ||
+      !dataNascimento ||
+      !senha ||
+      !confirmarSenha
     ) {
       alert("Preencha todos os campos!");
       return;
@@ -27,9 +29,53 @@ function Cadastro({ irParaLogin }) {
       return;
     }
 
-    alert("Cadastro realizado com sucesso!");
+    try {
+      const resposta = await fetch(
+        "http://localhost:3000/clientes",
+        {
+          method: "POST",
 
-    irParaLogin();
+          headers: {
+            "Content-Type": "application/json"
+          },
+
+          body: JSON.stringify({
+            nome: nome,
+            email: email,
+            telefone: telefone,
+            data_nascimento: dataNascimento,
+            senha: senha
+          })
+        }
+      );
+
+      const dados = await resposta.json();
+
+      if (!resposta.ok) {
+        alert(dados.message || "Erro ao realizar cadastro.");
+        return;
+      }
+
+      alert(
+        dados.message || "Cliente cadastrado com sucesso!"
+      );
+
+      setNome("");
+      setEmail("");
+      setTelefone("");
+      setDataNascimento("");
+      setSenha("");
+      setConfirmarSenha("");
+
+      irParaLogin();
+
+    } catch (erro) {
+      console.error("Erro ao cadastrar:", erro);
+
+      alert(
+        "Não foi possível conectar ao Back-End."
+      );
+    }
   }
 
   return (
@@ -42,10 +88,12 @@ function Cadastro({ irParaLogin }) {
         </div>
 
         <h2 className="nome-sistema">
-           AGENDA BARBER
+          AGENDA BARBER
         </h2>
 
-        <h1>Crie sua conta</h1>
+        <h1>
+          Crie sua conta
+        </h1>
 
         <p className="descricao">
           Preencha seus dados para se cadastrar.
@@ -54,61 +102,110 @@ function Cadastro({ irParaLogin }) {
         <form onSubmit={cadastrar}>
 
           <div className="campo">
-            <label>Nome completo</label>
+
+            <label>
+              Nome completo
+            </label>
 
             <input
               type="text"
               placeholder="Digite seu nome"
               value={nome}
-              onChange={(event) => setNome(event.target.value)}
+              onChange={(event) =>
+                setNome(event.target.value)
+              }
             />
+
           </div>
 
           <div className="campo">
-            <label>E-mail</label>
+
+            <label>
+              E-mail
+            </label>
 
             <input
               type="email"
               placeholder="Digite seu e-mail"
               value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              onChange={(event) =>
+                setEmail(event.target.value)
+              }
             />
+
           </div>
 
           <div className="campo">
-            <label>Telefone</label>
+
+            <label>
+              Telefone
+            </label>
 
             <input
               type="text"
               placeholder="Digite seu telefone"
               value={telefone}
-              onChange={(event) => setTelefone(event.target.value)}
+              onChange={(event) =>
+                setTelefone(event.target.value)
+              }
             />
+
           </div>
 
           <div className="campo">
-            <label>Senha</label>
+
+            <label>
+              Data de nascimento
+            </label>
+
+            <input
+              type="date"
+              value={dataNascimento}
+              onChange={(event) =>
+                setDataNascimento(event.target.value)
+              }
+            />
+
+          </div>
+
+          <div className="campo">
+
+            <label>
+              Senha
+            </label>
 
             <input
               type="password"
               placeholder="Digite sua senha"
               value={senha}
-              onChange={(event) => setSenha(event.target.value)}
+              onChange={(event) =>
+                setSenha(event.target.value)
+              }
             />
+
           </div>
 
           <div className="campo">
-            <label>Confirmar senha</label>
+
+            <label>
+              Confirmar senha
+            </label>
 
             <input
               type="password"
               placeholder="Digite a senha novamente"
               value={confirmarSenha}
-              onChange={(event) => setConfirmarSenha(event.target.value)}
+              onChange={(event) =>
+                setConfirmarSenha(event.target.value)
+              }
             />
+
           </div>
 
-          <button className="botao-entrar" type="submit">
+          <button
+            className="botao-entrar"
+            type="submit"
+          >
             Criar conta
           </button>
 

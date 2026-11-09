@@ -1,0 +1,226 @@
+* {
+  box-sizing: border-box;
+}
+
+.editar-barbeiro-page {
+  min-height: 100vh;
+  width: 100%;
+
+  background: #f4f7fb;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.editar-barbeiro-card {
+  width: 100%;
+  max-width: 620px;
+
+  background: #ffffff;
+
+  border-radius: 22px;
+
+  padding: 38px;
+
+  border: 1px solid #e8edf5;
+
+  box-shadow: 0 15px 45px rgba(15, 23, 42, 0.1);
+}
+
+/* CABEÇALHO */
+
+.editar-barbeiro-header {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  margin-bottom: 35px;
+}
+
+.barbeiro-icon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eaf2ff;
+
+  color: #1769e0;
+
+  border-radius: 16px;
+
+  font-size: 27px;
+}
+
+.editar-barbeiro-header h1 {
+  margin: 0 0 6px;
+
+  font-size: 28px;
+
+  font-weight: 700;
+
+  color: #172033;
+}
+
+.editar-barbeiro-header p {
+  margin: 0;
+
+  font-size: 14px;
+
+  color: #7b8495;
+}
+
+/* CAMPOS */
+
+.campo-barbeiro {
+  margin-bottom: 22px;
+}
+
+.campo-barbeiro label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #344054;
+}
+
+.campo-barbeiro input {
+  width: 100%;
+
+  height: 52px;
+
+  padding: 0 16px;
+
+  border: 1px solid #d8dee9;
+
+  border-radius: 12px;
+
+  background: #fbfcfe;
+
+  color: #172033;
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition: 0.2s;
+}
+
+.campo-barbeiro input::placeholder {
+  color: #a0a8b7;
+}
+
+.campo-barbeiro input:hover {
+  border-color: #b8c2d3;
+}
+
+.campo-barbeiro input:focus {
+  background: #ffffff;
+
+  border-color: #1769e0;
+
+  box-shadow: 0 0 0 4px rgba(23, 105, 224, 0.1);
+}
+
+/* BOTÕES */
+
+.botoes-barbeiro {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 14px;
+
+  margin-top: 32px;
+}
+
+.botoes-barbeiro button {
+  height: 50px;
+
+  border-radius: 12px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.btn-voltar-barbeiro {
+  flex: 1;
+
+  background: #ffffff;
+
+  color: #475467;
+
+  border: 1px solid #d8dee9;
+}
+
+.btn-voltar-barbeiro:hover {
+  background: #f5f7fa;
+}
+
+.btn-salvar-barbeiro {
+  flex: 2;
+
+  border: none;
+
+  background: #1769e0;
+
+  color: #ffffff;
+
+  box-shadow: 0 5px 15px rgba(23, 105, 224, 0.22);
+}
+
+.btn-salvar-barbeiro:hover {
+  background: #1258bd;
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 8px 20px rgba(23, 105, 224, 0.28);
+}
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+  .editar-barbeiro-page {
+    padding: 20px 15px;
+  }
+
+  .editar-barbeiro-card {
+    padding: 25px 20px;
+
+    border-radius: 18px;
+  }
+
+  .editar-barbeiro-header h1 {
+    font-size: 23px;
+  }
+
+  .editar-barbeiro-header p {
+    font-size: 13px;
+  }
+
+  .botoes-barbeiro {
+    flex-direction: column;
+  }
+
+  .btn-voltar-barbeiro,
+  .btn-salvar-barbeiro {
+    width: 100%;
+  }
+}

@@ -1,0 +1,326 @@
+
+/* MEUS AGENDAMENTOS */
+
+.meus-agendamentos {
+  min-height: 100vh;
+  padding: 0 7% 60px;
+  background: #f3f6fa;
+  color: #30465c;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.meus-agendamentos * {
+  box-sizing: border-box;
+}
+
+/* CABEÇALHO */
+
+.agendamentos-header {
+  max-width: 1200px;
+  height: 85px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e9f0;
+}
+
+.agendamentos-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.agendamentos-logo > span {
+  width: 43px;
+  height: 43px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #345675;
+  color: white;
+  border-radius: 9px;
+  font-size: 23px;
+}
+
+.agendamentos-logo strong,
+.agendamentos-logo small {
+  display: block;
+}
+
+.agendamentos-logo strong {
+  color: #345675;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.agendamentos-logo small {
+  margin-top: 4px;
+  color: #8998a7;
+  font-size: 10px;
+}
+
+.voltar-inicio {
+  padding: 11px 17px;
+  background: white;
+  border: 1px solid #dce5ed;
+  border-radius: 7px;
+  color: #345675;
+  cursor: pointer;
+}
+
+/* INTRODUÇÃO */
+
+.agendamentos-intro {
+  max-width: 1200px;
+  margin: 42px auto 30px;
+}
+
+.agendamentos-intro > span {
+  color: #7892a9;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.agendamentos-intro h1 {
+  margin: 10px 0;
+  color: #345675;
+  font-size: 30px;
+}
+
+.agendamentos-intro p {
+  color: #8493a2;
+  font-size: 14px;
+}
+
+.novo-agendamento {
+  margin-top: 18px;
+  padding: 13px 20px;
+  border: none;
+  border-radius: 7px;
+  background: #345675;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.novo-agendamento:hover {
+  background: #456d90;
+}
+
+/* CONTEÚDO */
+
+.agendamentos-conteudo {
+  max-width: 1200px;
+  margin: auto;
+  padding: 28px;
+  background: white;
+  border: 1px solid #e4ebf1;
+  border-radius: 10px;
+}
+
+/* FILTROS */
+
+.agendamentos-filtros {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #e8edf2;
+}
+
+.agendamentos-filtros button {
+  padding: 12px 17px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #8795a4;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.agendamentos-filtros button.filtro-ativo {
+  color: #345675;
+  border-bottom-color: #456d90;
+  font-weight: 700;
+}
+
+/* LISTA */
+
+.agendamentos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.agendamento-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #e4ebf1;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.agendamento-data {
+  width: 65px;
+  height: 70px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #eaf1f7;
+  color: #345675;
+  border-radius: 8px;
+}
+
+.agendamento-data strong {
+  font-size: 25px;
+}
+
+.agendamento-data span {
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.agendamento-detalhes {
+  flex: 1;
+}
+
+.agendamento-detalhes h3 {
+  margin: 0 0 7px;
+  color: #345675;
+  font-size: 16px;
+}
+
+.agendamento-detalhes p {
+  margin: 0 0 12px;
+  color: #8292a2;
+  font-size: 12px;
+}
+
+.agendamento-informacoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.agendamento-informacoes span {
+  color: #718498;
+  font-size: 11px;
+}
+
+.agendamento-lateral {
+  min-width: 115px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.agendamento-preco {
+  color: #345675;
+  font-size: 17px;
+}
+
+.status-pendente,
+.status-cancelado {
+  padding: 6px 11px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.status-pendente {
+  background: #eaf1f7;
+  color: #456b8e;
+}
+
+.status-cancelado {
+  background: #fceeee;
+  color: #b35454;
+}
+
+.cancelar-agendamento {
+  padding: 7px 12px;
+  border: 1px solid #e3a9a9;
+  border-radius: 6px;
+  background: white;
+  color: #b35454;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.cancelar-agendamento:hover {
+  background: #fff1f1;
+}
+
+/* ESTADO VAZIO */
+
+.agendamentos-vazio {
+  padding: 55px 20px;
+  text-align: center;
+  background: #f8fafc;
+  border-radius: 9px;
+}
+
+.agendamentos-vazio > span {
+  color: #7895b1;
+  font-size: 40px;
+}
+
+.agendamentos-vazio h2 {
+  margin: 15px 0 8px;
+  color: #345675;
+  font-size: 19px;
+}
+
+.agendamentos-vazio p {
+  color: #8795a4;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 750px) {
+  .meus-agendamentos {
+    padding: 0 4% 40px;
+  }
+
+  .agendamento-item {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .agendamento-lateral {
+    width: 100%;
+    min-width: 0;
+    align-items: flex-start;
+    padding-left: 85px;
+  }
+}
+
+@media (max-width: 500px) {
+  .agendamentos-conteudo {
+    padding: 18px 13px;
+  }
+
+  .agendamentos-intro h1 {
+    font-size: 25px;
+  }
+
+  .agendamento-informacoes {
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .agendamentos-filtros button {
+    padding: 10px 9px;
+    font-size: 12px;
+  }
+}
