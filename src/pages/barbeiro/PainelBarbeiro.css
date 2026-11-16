@@ -1,0 +1,514 @@
+/* =====================================================
+   PAINEL DO BARBEIRO (todas as telas com menu lateral)
+   ===================================================== */
+
+.painel-barbeiro {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f7fb;
+  color: #0f1b3d;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ---------- menu lateral ---------- */
+
+.painel-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 220px;
+  padding: 24px 14px;
+  background: white;
+  border-right: 1px solid #e3e9f1;
+}
+
+.painel-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: #2a45e8;
+}
+
+.painel-logo-icone {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #2f4bf2;
+  color: white;
+  font-size: 24px;
+}
+
+.painel-menu nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.painel-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #3b4a68;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.painel-menu-item:hover {
+  background: #f0f4ff;
+}
+
+.painel-menu-item.ativo {
+  background: #e3ebff;
+  color: #1f3ad6;
+  font-weight: 700;
+}
+
+.painel-sair {
+  padding: 10px;
+  border: 1px solid #f0c4c4;
+  border-radius: 8px;
+  background: white;
+  color: #b42318;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.painel-sair:hover {
+  background: #fdf0f0;
+}
+
+/* ---------- área principal ---------- */
+
+.painel-area {
+  flex: 1;
+  min-width: 0;
+}
+
+.painel-topo {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 32px 0;
+}
+
+.painel-usuario {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 6px;
+  border: 1px solid #e3e9f1;
+  border-radius: 24px;
+  background: white;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.painel-avatar {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #dce6ff;
+  color: #1f3ad6;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.painel-conteudo {
+  padding: 8px 32px 40px;
+  max-width: 1000px;
+}
+
+.painel-conteudo h1 {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+
+.painel-subtitulo {
+  margin-bottom: 24px;
+  color: #5b6b8a;
+  font-size: 14px;
+}
+
+/* ---------- cartões ---------- */
+
+.painel-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.painel-card-resumo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  background: white;
+  border: 1px solid #e3e9f1;
+  border-radius: 12px;
+}
+
+.painel-card-icone {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: #e3ebff;
+  color: #1f3ad6;
+  font-size: 20px;
+}
+
+.painel-card-resumo strong {
+  display: block;
+  font-size: 24px;
+}
+
+.painel-card-resumo small {
+  color: #5b6b8a;
+}
+
+.painel-grade {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+}
+
+.painel-bloco {
+  padding: 20px;
+  background: white;
+  border: 1px solid #e3e9f1;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.painel-bloco-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.painel-bloco h2 {
+  font-size: 16px;
+}
+
+.painel-link {
+  border: none;
+  background: none;
+  color: #2a45e8;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.painel-lista {
+  list-style: none;
+}
+
+.painel-lista li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.painel-lista li:last-child {
+  border-bottom: none;
+}
+
+.painel-hora {
+  min-width: 56px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: #e3ebff;
+  color: #1f3ad6;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.painel-lista small {
+  display: block;
+  color: #5b6b8a;
+}
+
+.painel-contagem {
+  margin-left: auto;
+  font-weight: 700;
+}
+
+.painel-vazio {
+  padding: 18px 0;
+  color: #7b8aa6;
+  font-size: 14px;
+}
+
+/* aviso de pedidos pendentes */
+
+.painel-aviso {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  background: #fff8e6;
+  border: 1px solid #f1deaa;
+  border-radius: 12px;
+  color: #6b5416;
+  font-size: 14px;
+}
+
+/* ---------- botões e formulários ---------- */
+
+.btn-painel {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #2f4bf2;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-painel:hover {
+  background: #1f3ad6;
+}
+
+.btn-painel.secundario {
+  background: white;
+  border: 1px solid #cfd8ea;
+  color: #1f3ad6;
+}
+
+.btn-painel.perigo {
+  background: white;
+  border: 1px solid #f0c4c4;
+  color: #b42318;
+}
+
+.btn-painel.pequeno {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.painel-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.painel-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.painel-campo.largo {
+  grid-column: 1 / -1;
+}
+
+.painel-campo input,
+.painel-campo select,
+.painel-campo textarea {
+  padding: 10px 12px;
+  border: 1px solid #cfd8ea;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: inherit;
+}
+
+.painel-form-acoes {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+}
+
+.painel-erro {
+  grid-column: 1 / -1;
+  color: #b42318;
+  font-size: 13px;
+}
+
+.painel-sucesso {
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #e6f6ec;
+  color: #2f7d4f;
+  font-size: 14px;
+}
+
+/* ---------- tabela de agendamentos ---------- */
+
+.painel-filtros {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.painel-filtros button {
+  padding: 7px 14px;
+  border: 1px solid #cfd8ea;
+  border-radius: 20px;
+  background: white;
+  color: #3b4a68;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.painel-filtros button.ativo {
+  background: #2f4bf2;
+  border-color: #2f4bf2;
+  color: white;
+}
+
+.painel-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 14px 16px;
+  background: white;
+  border: 1px solid #e3e9f1;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.painel-item-principal {
+  flex: 1;
+  min-width: 180px;
+}
+
+.painel-item-principal small {
+  display: block;
+  margin-top: 2px;
+  color: #5b6b8a;
+}
+
+.painel-item-acoes {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.selo {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.selo.pendente { background: #fff1d6; color: #8a5a00; }
+.selo.confirmado { background: #e6f6ec; color: #2f7d4f; }
+.selo.concluido { background: #eceff3; color: #5d6b7a; }
+.selo.cancelado { background: #fceeee; color: #b35454; }
+.selo.inativo { background: #eceff3; color: #5d6b7a; }
+
+/* ---------- disponibilidade ---------- */
+
+.painel-dias {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.painel-dia {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid #cfd8ea;
+  border-radius: 8px;
+  background: white;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.painel-dia.marcado {
+  background: #e3ebff;
+  border-color: #2f4bf2;
+  color: #1f3ad6;
+  font-weight: 700;
+}
+
+/* ---------- celular ---------- */
+
+@media (max-width: 800px) {
+  .painel-barbeiro {
+    flex-direction: column;
+  }
+
+  .painel-menu {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: 1px solid #e3e9f1;
+  }
+
+  .painel-logo strong {
+    display: none;
+  }
+
+  .painel-logo-icone {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+
+  .painel-menu nav {
+    flex-direction: row;
+  }
+
+  .painel-menu-item {
+    white-space: nowrap;
+  }
+
+  .painel-topo {
+    padding: 12px 16px 0;
+  }
+
+  .painel-conteudo {
+    padding: 8px 16px 32px;
+  }
+
+  .painel-cards,
+  .painel-grade,
+  .painel-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* telas de perfil (já existentes) quando abertas dentro do painel */
+.painel-conteudo .perfil-container,
+.painel-conteudo .editar-barbeiro-page {
+  min-height: auto;
+  padding: 8px 0 24px;
+  background: transparent;
+  justify-content: flex-start;
+  align-items: flex-start;
+}

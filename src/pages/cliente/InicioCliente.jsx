@@ -1,21 +1,27 @@
 
 import "./InicioCliente.css";
 
-function moeda(valor) {
-  return Number(valor || 0).toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  });
-}
+import {
+  STATUS,
+  dataLocal,
+  formatarMes,
+  moeda,
+} from "../../services/agendaStorage";
 
-function formatarMes(data) {
-  if (!data) return "---";
+// devolve "hoje", "amanhã" ou null, para o lembrete
+function quandoAcontece(data) {
+  if (!data) return null;
 
-  return new Date(`${data}T12:00:00`)
-    .toLocaleDateString("pt-BR", {
-      month: "short",
-    })
-    .replace(".", "");
+  if (data === dataLocal()) return "hoje";
+
+  const amanha = new Date();
+  amanha.setDate(amanha.getDate() + 1);
+
+  const ano = amanha.getFullYear();
+  const mes = String(amanha.getMonth() + 1).padStart(2, "0");
+  const dia = String(amanha.getDate()).padStart(2, "0");
+
+  return data === `${ano}-${mes}-${dia}` ? "amanhã" : null;
 }
 
 export default function InicioCliente({
@@ -24,15 +30,16 @@ export default function InicioCliente({
   meusAgendamentos = [],
   servicos = [],
   irParaAgendar = () => {},
+  irParaMeusAgendamentos = () => {},
   irParaPerfil = () => {},
 }) {
   const proximo = proximosAgendamentos[0];
 
   const concluidos = meusAgendamentos.filter(
-    (item) =>
-      item.status?.toLowerCase() === "concluído" ||
-      item.status?.toLowerCase() === "concluido"
+    (item) => item.status === STATUS.CONCLUIDO
   ).length;
+
+  const quando = quandoAcontece(proximo?.data);
 
   const servicosAtivos = servicos.filter(
     (item) => item.ativo !== false
@@ -52,12 +59,21 @@ export default function InicioCliente({
           </div>
         </div>
 
-        <button
-          className="perfil-header"
-          onClick={irParaPerfil}
-        >
-          Meu perfil
-        </button>
+        <div className="cliente-header-acoes">
+          <button
+            className="perfil-header"
+            onClick={irParaMeusAgendamentos}
+          >
+            Meus agendamentos
+          </button>
+
+          <button
+            className="perfil-header"
+            onClick={irParaPerfil}
+          >
+            Meu perfil
+          </button>
+        </div>
       </header>
 
       {/* BOAS-VINDAS */}
@@ -89,6 +105,20 @@ export default function InicioCliente({
           ✂
         </div>
       </section>
+
+      {/* LEMBRETE */}
+
+      {quando && (
+        <section className="lembrete-card" role="status">
+          <span className="lembrete-icone">🔔</span>
+
+          <p>
+            Lembrete: você tem <strong>{proximo.servicoNome}</strong>{" "}
+            {quando} às <strong>{proximo.hora}</strong> com{" "}
+            {proximo.barbeiroNome || "o barbeiro"}.
+          </p>
+        </section>
+      )}
 
       {/* INDICADORES */}
 
@@ -135,6 +165,13 @@ export default function InicioCliente({
 
             <h2>Próximo agendamento</h2>
           </div>
+
+          <button
+            className="button-secondary"
+            onClick={irParaMeusAgendamentos}
+          >
+            Ver todos
+          </button>
         </div>
 
         {proximo ? (

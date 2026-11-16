@@ -228,6 +228,8 @@
 }
 
 .status-pendente,
+.status-confirmado,
+.status-concluido,
 .status-cancelado {
   padding: 6px 11px;
   border-radius: 20px;
@@ -238,6 +240,16 @@
 .status-pendente {
   background: #eaf1f7;
   color: #456b8e;
+}
+
+.status-confirmado {
+  background: #e6f6ec;
+  color: #2f7d4f;
+}
+
+.status-concluido {
+  background: #eceff3;
+  color: #5d6b7a;
 }
 
 .status-cancelado {

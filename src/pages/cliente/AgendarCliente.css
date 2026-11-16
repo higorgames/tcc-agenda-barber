@@ -519,3 +519,19 @@
     font-size: 12px;
   }
 }
+
+/* horário já ocupado ou que já passou */
+.horario-item:disabled,
+.horario-item.ocupado {
+  background: #eef1f4;
+  border-color: #e2e7ec;
+  color: #a7b3bf;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+.horario-item:disabled:hover {
+  background: #eef1f4;
+  border-color: #e2e7ec;
+  color: #a7b3bf;
+}

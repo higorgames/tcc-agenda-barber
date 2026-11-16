@@ -2,39 +2,23 @@
 import { useState } from "react";
 import "./MeusAgendamentos.css";
 
-function carregarAgendamentos() {
-  try {
-    const dados = JSON.parse(
-      localStorage.getItem("agendamentos") || "[]"
-    );
-
-    return Array.isArray(dados) ? dados : [];
-  } catch {
-    return [];
-  }
-}
-
-function formatarData(data) {
-  if (!data) return "--/--/----";
-
-  return new Date(`${data}T12:00:00`).toLocaleDateString(
-    "pt-BR"
-  );
-}
-
-function moeda(valor) {
-  return Number(valor || 0).toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  });
-}
+import {
+  STATUS,
+  atualizarStatusAgendamento,
+  carregarAgendamentos,
+  filtrarDoCliente,
+  formatarData,
+  moeda,
+  ordenarPorDataHora,
+} from "../../services/agendaStorage";
 
 export default function MeusAgendamentos({
-  irParaInicio,
-  irParaAgendar,
+  usuario = {},
+  irParaInicio = () => {},
+  irParaAgendar = () => {},
 }) {
-  const [agendamentos, setAgendamentos] = useState(
-    carregarAgendamentos
+  const [agendamentos, setAgendamentos] = useState(() =>
+    filtrarDoCliente(carregarAgendamentos(), usuario)
   );
 
   const [filtro, setFiltro] = useState("Todos");
@@ -46,38 +30,33 @@ export default function MeusAgendamentos({
 
     if (!confirmar) return;
 
-    const atualizados = agendamentos.map((item) =>
-      item.id === id
-        ? { ...item, status: "Cancelado" }
-        : item
-    );
+    atualizarStatusAgendamento(id, STATUS.CANCELADO);
 
-    setAgendamentos(atualizados);
-
-    localStorage.setItem(
-      "agendamentos",
-      JSON.stringify(atualizados)
+    setAgendamentos((atuais) =>
+      atuais.map((item) =>
+        item.id === id
+          ? { ...item, status: STATUS.CANCELADO }
+          : item
+      )
     );
   }
 
-  const agendamentosFiltrados = agendamentos
-    .filter((item) => {
+  const agendamentosFiltrados = ordenarPorDataHora(agendamentos).filter(
+    (item) => {
       if (filtro === "Ativos") {
-        return item.status !== "Cancelado";
+        return (
+          item.status === STATUS.PENDENTE ||
+          item.status === STATUS.CONFIRMADO
+        );
       }
 
       if (filtro === "Cancelados") {
-        return item.status === "Cancelado";
+        return item.status === STATUS.CANCELADO;
       }
 
       return true;
-    })
-    .sort((a, b) => {
-      const dataA = `${a.data} ${a.hora}`;
-      const dataB = `${b.data} ${b.hora}`;
-
-      return dataA.localeCompare(dataB);
-    });
+    }
+  );
 
   return (
     <main className="meus-agendamentos">
@@ -203,15 +182,20 @@ export default function MeusAgendamentos({
 
                   <span
                     className={
-                      item.status === "Cancelado"
+                      item.status === STATUS.CANCELADO
                         ? "status-cancelado"
+                        : item.status === STATUS.CONFIRMADO
+                        ? "status-confirmado"
+                        : item.status === STATUS.CONCLUIDO
+                        ? "status-concluido"
                         : "status-pendente"
                     }
                   >
                     {item.status}
                   </span>
 
-                  {item.status !== "Cancelado" && (
+                  {(item.status === STATUS.PENDENTE ||
+                    item.status === STATUS.CONFIRMADO) && (
                     <button
                       className="cancelar-agendamento"
                       onClick={() =>

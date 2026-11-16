@@ -478,3 +478,28 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* ações do cabeçalho (Meus agendamentos / Meu perfil) */
+.cliente-header-acoes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* lembrete do próximo horário */
+.lembrete-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 20px;
+  padding: 16px 20px;
+  background: #fff8e6;
+  border: 1px solid #f1deaa;
+  border-radius: 12px;
+  color: #6b5416;
+  font-size: 14px;
+}
+
+.lembrete-icone {
+  font-size: 20px;
+}

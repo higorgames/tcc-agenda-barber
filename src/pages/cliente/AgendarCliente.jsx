@@ -1,75 +1,81 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./AgendarCliente.css";
 
-const servicos = [
-  {
-    id: 1,
-    nome: "Corte masculino",
-    descricao: "Corte tradicional ou degradê.",
-    duracao: 40,
-    preco: 35,
-  },
-  {
-    id: 2,
-    nome: "Barba",
-    descricao: "Aparar e modelar a barba.",
-    duracao: 30,
-    preco: 25,
-  },
-  {
-    id: 3,
-    nome: "Cabelo + Barba",
-    descricao: "Atendimento completo.",
-    duracao: 60,
-    preco: 55,
-  },
-];
+import {
+  BARBEIROS_PADRAO,
+  STATUS,
+  carregarAgendamentos,
+  carregarDisponibilidade,
+  carregarServicos,
+  dataLocal,
+  diaDaSemana,
+  gerarHorarios,
+  horarioIndisponivel,
+  moeda,
+  salvarAgendamentos,
+} from "../../services/agendaStorage";
 
-const barbeiros = [
-  { id: 1, nome: "Carlos Mendes", especialidade: "Cortes masculinos" },
-  { id: 2, nome: "Rafael Souza", especialidade: "Barba e acabamento" },
-  { id: 3, nome: "Lucas Ferreira", especialidade: "Cortes modernos" },
-];
+// tenta buscar os barbeiros cadastrados no Back-End;
+// se a rota não existir, usa a lista de exemplo
+async function buscarBarbeiros() {
+  try {
+    const resposta = await fetch("http://localhost:3000/barbeiros");
 
-const horarios = [
-  "08:00",
-  "09:00",
-  "10:00",
-  "11:00",
-  "13:00",
-  "14:00",
-  "15:00",
-  "16:00",
-  "17:00",
-];
+    if (!resposta.ok) return BARBEIROS_PADRAO;
 
-function moeda(valor) {
-  return Number(valor).toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  });
-}
+    const dados = await resposta.json();
+    const lista = Array.isArray(dados) ? dados : dados.barbeiros;
 
-function dataLocal() {
-  const hoje = new Date();
-  const ano = hoje.getFullYear();
-  const mes = String(hoje.getMonth() + 1).padStart(2, "0");
-  const dia = String(hoje.getDate()).padStart(2, "0");
+    if (!Array.isArray(lista) || lista.length === 0) {
+      return BARBEIROS_PADRAO;
+    }
 
-  return `${ano}-${mes}-${dia}`;
+    return lista.map((item) => ({
+      id: item.id_usuario ?? item.id,
+      nome: item.nome,
+      especialidade: item.especialidade || "Barbeiro",
+    }));
+  } catch {
+    return BARBEIROS_PADRAO;
+  }
 }
 
 export default function AgendarCliente({
-  irParaInicio,
-  irParaMeusAgendamentos,
+  usuario = {},
+  irParaInicio = () => {},
+  irParaMeusAgendamentos = () => {},
 }) {
+  const [servicos] = useState(() =>
+    carregarServicos().filter((item) => item.ativo !== false)
+  );
+  const [barbeiros, setBarbeiros] = useState(BARBEIROS_PADRAO);
+  const [disponibilidade] = useState(carregarDisponibilidade);
+  const [agendamentos, setAgendamentos] = useState(carregarAgendamentos);
+
   const [servicoSelecionado, setServicoSelecionado] = useState(null);
   const [barbeiroSelecionado, setBarbeiroSelecionado] = useState(null);
   const [data, setData] = useState("");
   const [horario, setHorario] = useState("");
   const [erro, setErro] = useState("");
   const [resumo, setResumo] = useState(null);
+
+  useEffect(() => {
+    let ativo = true;
+
+    buscarBarbeiros().then((lista) => {
+      if (ativo) setBarbeiros(lista);
+    });
+
+    return () => {
+      ativo = false;
+    };
+  }, []);
+
+  const diaFechado =
+    Boolean(data) && !disponibilidade.dias[diaDaSemana(data)];
+
+  const horariosDoDia = gerarHorarios(data, disponibilidade);
 
   const servico = servicos.find(
     (item) => item.id === servicoSelecionado
@@ -100,41 +106,49 @@ export default function AgendarCliente({
   function voltarParaEdicao() {
     setResumo(null);
   }
-   function salvarAgendamento() {
-  if (!resumo) return;
+  function salvarAgendamento() {
+    if (!resumo) return;
 
-  let lista = [];
+    // lê de novo do armazenamento: outro cliente pode ter marcado
+    // o mesmo horário enquanto esta tela estava aberta
+    const atuais = carregarAgendamentos();
 
-  try {
-    const dados = JSON.parse(
-      localStorage.getItem("agendamentos") || "[]"
-    );
-
-    if (Array.isArray(dados)) {
-      lista = dados;
+    if (
+      horarioIndisponivel(
+        resumo.data,
+        resumo.horario,
+        resumo.barbeiro.id,
+        atuais
+      )
+    ) {
+      setAgendamentos(atuais);
+      setResumo(null);
+      setHorario("");
+      setErro(
+        "Esse horário acabou de ser ocupado. Escolha outro horário."
+      );
+      return;
     }
-  } catch {
-    lista = [];
+
+    const novoAgendamento = {
+      id: `ag-${Date.now()}`,
+      clienteId: usuario.id_usuario ?? null,
+      clienteNome: usuario.nome || "Cliente",
+      servicoNome: resumo.servico.nome,
+      barbeiroId: resumo.barbeiro.id,
+      barbeiroNome: resumo.barbeiro.nome,
+      data: resumo.data,
+      hora: resumo.horario,
+      duracao: resumo.servico.duracao,
+      preco: resumo.servico.preco,
+      status: STATUS.PENDENTE,
+    };
+
+    salvarAgendamentos([...atuais, novoAgendamento]);
+
+    irParaMeusAgendamentos();
   }
 
-  const novoAgendamento = {
-    id: `ag-${Date.now()}`,
-    servicoNome: resumo.servico.nome,
-    barbeiroNome: resumo.barbeiro.nome,
-    data: resumo.data,
-    hora: resumo.horario,
-    duracao: resumo.servico.duracao,
-    preco: resumo.servico.preco,
-    status: "Pendente",
-  };
-
-  localStorage.setItem(
-    "agendamentos",
-    JSON.stringify([...lista, novoAgendamento])
-  );
-
-  irParaMeusAgendamentos();
-}
   return (
     <main className="agendar-page">
 
@@ -257,6 +271,7 @@ export default function AgendarCliente({
                   }`}
                   onClick={() => {
                     setBarbeiroSelecionado(item.id);
+                    setHorario("");
                     setErro("");
                   }}
                   aria-pressed={barbeiroSelecionado === item.id}
@@ -335,28 +350,49 @@ export default function AgendarCliente({
                 Primeiro selecione uma data para visualizar os horários.
               </p>
 
+            ) : !barbeiroSelecionado ? (
+
+              <p className="aviso-horario">
+                Escolha o profissional para ver os horários livres.
+              </p>
+
+            ) : diaFechado ? (
+
+              <p className="aviso-horario">
+                A barbearia não atende neste dia. Escolha outra data.
+              </p>
+
             ) : (
 
               <div className="horarios-grid">
 
-                {horarios.map((hora) => (
+                {horariosDoDia.map((hora) => {
+                  const indisponivel = horarioIndisponivel(
+                    data,
+                    hora,
+                    barbeiroSelecionado,
+                    agendamentos
+                  );
 
-                  <button
-                    type="button"
-                    key={hora}
-                    className={`horario-item ${
-                      horario === hora ? "selecionado" : ""
-                    }`}
-                    onClick={() => {
-                      setHorario(hora);
-                      setErro("");
-                    }}
-                    aria-pressed={horario === hora}
-                  >
-                    {hora}
-                  </button>
-
-                ))}
+                  return (
+                    <button
+                      type="button"
+                      key={hora}
+                      disabled={indisponivel}
+                      title={indisponivel ? "Horário indisponível" : ""}
+                      className={`horario-item ${
+                        horario === hora ? "selecionado" : ""
+                      } ${indisponivel ? "ocupado" : ""}`}
+                      onClick={() => {
+                        setHorario(hora);
+                        setErro("");
+                      }}
+                      aria-pressed={horario === hora}
+                    >
+                      {hora}
+                    </button>
+                  );
+                })}
 
               </div>
 
@@ -412,11 +448,6 @@ export default function AgendarCliente({
 
           </section>
 
-          <p className="agendar-observacao">
-            Demonstração visual: os horários e profissionais
-            serão conectados ao banco de dados posteriormente.
-          </p>
-
         </form>
 
       ) : (
@@ -470,33 +501,27 @@ export default function AgendarCliente({
           </div>
 
           <p className="aviso-demonstracao">
-            Esta é uma prévia. O agendamento ainda não foi
-            enviado nem confirmado pelo servidor.
+            Seu horário ficará como pendente até o barbeiro confirmar.
+            Você pode acompanhar e cancelar em "Meus agendamentos".
           </p>
 
-          <button
-            type="button"
-            className="botao-confirmar"
-            onClick={voltarParaEdicao}
-          >
-         <div className="confirmacao-acoes">
-         <button
-    type="button"
-    className="botao-voltar-edicao"
-    onClick={voltarParaEdicao}
-  >
-    Voltar e editar
-  </button>
+          <div className="confirmacao-acoes">
+            <button
+              type="button"
+              className="botao-voltar-edicao"
+              onClick={voltarParaEdicao}
+            >
+              Voltar e editar
+            </button>
 
-  <button
-    type="button"
-    className="botao-confirmar"
-    onClick={salvarAgendamento}
-  >
-    Confirmar agendamento
-  </button>
-</div>
-          </button>
+            <button
+              type="button"
+              className="botao-confirmar"
+              onClick={salvarAgendamento}
+            >
+              Confirmar agendamento
+            </button>
+          </div>
 
         </section>
 

@@ -3,6 +3,7 @@ import "./Perfil.css";
 function Perfil({
   usuario,
   irParaEditarPerfil,
+  irParaInicio = () => {},
   irParaLogin
 }) {
 
@@ -134,6 +135,13 @@ function Perfil({
           onClick={irParaEditarPerfil}
         >
           Editar Perfil
+        </button>
+
+        <button
+          className="btn-voltar-inicio"
+          onClick={irParaInicio}
+        >
+          ← Voltar ao início
         </button>
 
         <button
